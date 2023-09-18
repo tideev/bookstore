@@ -36,7 +36,7 @@ public class BookController {
     @PostMapping(value = "/save")
     public String saveBook(@ModelAttribute("book") Book book) {
         if (book.getId() == null) {
-            // Jos kirjalla ei ole ID:tä, se on uusi kirja, joten tallenna se
+            // Jos kirjalla ei ole ID:tä, se on uusi kirja, joten tallennetaan se
             bookRepository.save(book);
         } else {
             // Haetaan kirja tietokannasta sen ID:n perusteella
@@ -46,6 +46,7 @@ public class BookController {
                 // Päivitetään kirjan tiedot muokatulla kirjalla
                 existingBook.setTitle(book.getTitle());
                 existingBook.setAuthor(book.getAuthor());
+                existingBook.setYear(book.getYear());
                 existingBook.setIsbn(book.getIsbn());
                 existingBook.setPrice(book.getPrice());
                 // Tallennetaan päivitetty kirja tietokantaan
@@ -69,7 +70,6 @@ public class BookController {
             return "editbook";
         } else {
             // Käsitellään tilanne, jossa kirjaa ei löydy
-            // Voit ohjata takaisin kirjaluettelosivulle tai näyttää virhesivun
             return "redirect:/bookstore"; // Ohjataan kirjaluettelosivulle
         }
     }
