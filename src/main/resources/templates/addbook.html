@@ -1,32 +1,41 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <title>Add Book</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<title>Add Book</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
+
 <body>
 	<h1>Add a book</h1>
 	<div>
 		<form th:object="${book}" th:action="@{save}" action="#" method="post">
-            <input type="hidden" th:field="*{id}" />
-            <label for="Title">Title</label>
+			<input type="hidden" th:field="*{id}" />
+			<label for="Title">Title: </label>
 			<input type="text" id="title" th:field="*{title}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-		  	<label for="author">Author</label>
+			<label for="author">Author: </label>
 			<input type="text" id="author" th:field="*{author}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="year">Publishing year</label>
+			<label for="year">Publishing year: </label>
 			<input type="text" id="year" th:field="*{year}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-		  	<label for="isbn">ISBN</label>
+			<label for="category">Category: </label>
+			<select id="category" name="category" th:field="*{category.categoryId}">
+				<option th:each="category : ${categories}" th:value="${category.categoryId}" th:text="${category.name}">
+				</option>
+			</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="isbn">ISBN: </label>
 			<input type="text" th:field="*{isbn}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-            <label for="price">Price</label>
+			<label for="price">Price: </label>
 			<input type="text" th:field="*{price}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<input type="submit" value="Save"></input>
+			<input type="submit" value="Save" class="btn btn-success"></input>
 		</form>
 	</div>
 </body>
+
 </html>
