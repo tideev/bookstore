@@ -1,0 +1,13 @@
+{
+  "_links": {
+    "books": {
+      "href": "http://localhost:8080/api/books"
+    },
+    "categories": {
+      "href": "http://localhost:8080/api/categories"
+    },
+    "profile": {
+      "href": "http://localhost:8080/api/profile"
+    }
+  }
+}

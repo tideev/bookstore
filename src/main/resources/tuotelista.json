@@ -1,0 +1,19 @@
+
+[
+ {
+    "nimi": "Jalkapallo",
+    "kuvaus": "Mainio säännölliseen harjoitteluun!",
+    "hinta" : 35.50
+ },
+{
+    "nimi": "Sählypallo",
+    "kuvaus": "Aerodynaaminen muotoilu",
+    "hinta" : 24.00
+
+ },
+{   "nimi": "Pipo",
+    "kuvaus": "lampaanvillaa Paraisilta",
+    "hinta" : 40.00
+
+ }
+]

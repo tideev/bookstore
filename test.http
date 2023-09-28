@@ -1,0 +1,23 @@
+### GET kaikki kirjat
+
+get http://localhost:8080/api/books
+
+### Get kirja id:llä
+
+get http://localhost:8080/api/books/5
+
+### Post lisää kirja
+
+POST  http://localhost:8080/api/books
+Content-Type: application/json
+
+{
+    "title": "Testi",
+    "author": "J.Jokunen",
+    "isbn": "5050-40404",
+    "year": 2020,
+    "price": 10.00,
+    "category": {
+      "categoryId": 4
+    }
+}
