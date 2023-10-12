@@ -17,10 +17,11 @@ import hh.sof03.bookstore.domain.BookRepository;
 @DataJpaTest
 public class BookRepositoryTest {
 
-    @Autowired BookRepository bRepository;
+    @Autowired 
+    BookRepository bRepository;
     
-    @Test  // testataan StudentRepositoryn findByLastName()-metodin toimivuutta
-    public void findByLastnameShouldReturnStudent() {
+    @Test  // testataan BookRepositoryn findByTitle()-metodin toimivuutta
+    public void testFindByTitle() {
         List<Book> books = bRepository.findByTitle("Eclipse");
         
         assertThat(books).hasSize(1);
@@ -28,9 +29,22 @@ public class BookRepositoryTest {
     }
 
     @Test // testataan BookRepositoryn save()-metodin toimivuutta
-    public void createNewBook(){
-        Book book = new Book("Tides", "Sara Freeman", null, 2022, 26.00, null);
+    public void testCreateNewBook(){
+        Book book = new Book("Testbook", "Testauthor", "123-123-123", 2023, 25.00, null);
         bRepository.save(book);
         assertThat(book.getId()).isNotNull();
     }
+
+    @Test // testataan BookRepositoryn delete()-metodin toimivuutta
+    public void testDeleteBook (){
+        Book book = new Book("Testbook", "Testauthor", "123-123-123", 2023, 25.00, null);
+        bRepository.save(book);
+
+        Long bookId = book.getId();
+        assertThat(bRepository.findById(bookId)).isPresent();
+
+        bRepository.deleteById(bookId);
+        assertThat(bRepository.findById(bookId)).isEmpty();
+    }
+
 }
