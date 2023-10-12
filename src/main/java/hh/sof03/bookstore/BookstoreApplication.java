@@ -2,6 +2,7 @@ package hh.sof03.bookstore;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -46,10 +47,16 @@ public class BookstoreApplication {
 			userRepository.save(user1);
 			userRepository.save(user2);
 			
+			log.info("fetch all categories");
+			for (Category category : categoryRepository.findAll()) {
+				log.info(category.toString());
+			}
 
 			log.info("fetch all books");
 			for (Book book : bookRepository.findAll()) {
 				log.info(book.toString());
+
+
 			}
 		};
 		
